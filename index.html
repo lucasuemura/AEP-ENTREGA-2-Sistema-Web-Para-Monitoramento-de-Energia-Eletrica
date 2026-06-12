@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MONITOR - Gestão Energética Residencial</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div id="container-notificacoes"></div>
+
+    <header class="barra-navegacao">
+        <div class="container-navegacao">
+            <div class="marca" id="marca-navegacao">
+                <span class="titulo-marca">MONITOR<span>.</span></span>
+                <span class="subtitulo-marca">Gestão Energética Residencial</span>
+            </div>
+            <nav class="links-navegacao">
+                <button class="btn-navegacao ativo" data-alvo="pagina-inicio">Início</button>
+                <button class="btn-navegacao" data-alvo="pagina-simulador">Simulador</button>
+                <button class="btn-navegacao" data-alvo="pagina-dicas">Metas ODS 7</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="conteudo-principal">
+        
+        <section id="pagina-inicio" class="visualizacao-pagina ativo">
+            <div class="banner-principal animar-entrada">
+                <div class="texto-destaque">
+                    <span class="etiqueta">Compromisso ODS 7</span>
+                    <h1>Transforme a relação da sua casa com a energia elétrica.</h1>
+                    <p>Uma solução inteligente desenvolvida para mapear consumos, eliminar desperdícios ocultos e reduzir custos, alinhando sua residência às metas globais de sustentabilidade da ONU.</p>
+                    <div class="acoes-destaque">
+                        <button class="btn-primario navegacao-direta" data-alvo="pagina-simulador">Acessar Simulador</button>
+                        <button class="btn-secundario navegacao-direta" data-alvo="pagina-dicas">Conhecer Metas</button>
+                    </div>
+                </div>
+                <div class="visual-destaque">
+                    <div class="forma-geometrica flutuar">
+                        <div class="info-forma">
+                            <span class="numero-forma">26%</span>
+                            <span class="rotulo-forma">Do consumo nacional pertence ao setor residencial</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grade-recursos animar-entrada com-atraso">
+                <div class="cartao-recurso">
+                    <div class="icone-recurso">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                    </div>
+                    <h3>Análise de Impacto</h3>
+                    <p>Cadastre os aparelhos da sua residência por ambiente e descubra instantaneamente o consumo real convertido em kWh e Reais.</p>
+                </div>
+                <div class="cartao-recurso">
+                    <div class="icone-recurso">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="18" y="3" width="4" height="18"></rect><rect x="10" y="8" width="4" height="13"></rect><rect x="2" y="13" width="4" height="8"></rect></svg>
+                    </div>
+                    <h3>Mapeamento Visual</h3>
+                    <p>Gráficos interativos em tempo real que apontam com precisão matemática os maiores vilões do seu orçamento mensal.</p>
+                </div>
+                <div class="cartao-recurso">
+                    <div class="icone-recurso">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                    </div>
+                    <h3>Eficiência Prática</h3>
+                    <p>Planos de metas baseados no seu perfil de consumo para readequação de hábitos e simulação de economia imediata.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="pagina-simulador" class="visualizacao-pagina">
+            <div class="titulo-secao animar-entrada">
+                <h2>Simulador de Consumo Dinâmico</h2>
+                <p>Gerencie o inventário de dispositivos elétricos da sua residência.</p>
+            </div>
+            
+            <div class="layout-grade animar-entrada com-atraso">
+                <aside class="painel painel-formulario">
+                    <div class="cabecalho-painel">
+                        <h3>Registrar Dispositivo</h3>
+                        <div class="linha"></div>
+                    </div>
+                    <form id="formulario-aparelho">
+                        <div class="grupo-entrada">
+                            <label for="comodo">Cômodo / Ambiente</label>
+                            <select id="comodo" required>
+                                <option value="" disabled selected>Selecione o ambiente...</option>
+                                <option value="Cozinha">Cozinha</option>
+                                <option value="Quarto">Quarto</option>
+                                <option value="Sala">Sala de Estar</option>
+                                <option value="Banheiro">Banheiro</option>
+                                <option value="Lavanderia">Lavanderia</option>
+                                <option value="Outros">Outros</option>
+                            </select>
+                        </div>
+                        <div class="grupo-entrada">
+                            <label for="nome">Nome do Equipamento</label>
+                            <input type="text" id="nome" placeholder="Ex: Chuveiro Blindado" required>
+                        </div>
+                        <div class="grade-2-colunas">
+                            <div class="grupo-entrada">
+                                <label for="potencia">Potência (W)</label>
+                                <input type="number" id="potencia" placeholder="Ex: 5500" required min="1">
+                            </div>
+                            <div class="grupo-entrada">
+                                <label for="horas">Uso (Horas/Dia)</label>
+                                <input type="number" id="horas" placeholder="Ex: 1" step="0.1" required min="0.1" max="24">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-acao-primaria">
+                            <span>Adicionar ao Inventário</span>
+                            <span class="seta">→</span>
+                        </button>
+                    </form>
+                </aside>
+
+                <div class="painel-conteudo">
+                    <div class="grade-resultados">
+                        <div class="caixa-estatistica destacado">
+                            <p class="rotulo-estatistica">Custo Mensal Previsto</p>
+                            <h3 class="valor-estatistica" id="total-valor">R$ 0,00</h3>
+                        </div>
+                        <div class="caixa-estatistica">
+                            <p class="rotulo-estatistica">Consumo Total Acumulado</p>
+                            <h3 class="valor-estatistica" id="total-kwh">0.00 <span>kWh</span></h3>
+                        </div>
+                    </div>
+
+                    <div class="container-grafico">
+                        <canvas id="grafico-consumo"></canvas>
+                    </div>
+
+                    <div class="cabecalho-lista">
+                        <h3>Dispositivos Cadastrados</h3>
+                        <span id="contador-aparelhos" class="emblema-contador">0 ativos</span>
+                    </div>
+                    <div class="container-tabela">
+                        <table class="tabela-dados">
+                            <thead>
+                                <tr>
+                                    <th>Cômodo</th>
+                                    <th>Equipamento</th>
+                                    <th>Consumo Estimado</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="lista-aparelhos">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pagina-dicas" class="visualizacao-pagina">
+            <div class="titulo-secao animar-entrada">
+                <h2>Metas de Redução & ODS 7</h2>
+                <p>Estratégias práticas para mitigar o desperdício energético residencial.</p>
+            </div>
+
+            <div class="container-dicas animar-entrada com-atraso">
+                <div class="dicas-principal">
+                    <div class="banner-ods">
+                        <div class="numero-ods">7</div>
+                        <div class="texto-ods">
+                            <h3>Objetivo de Desenvolvimento Sustentável</h3>
+                            <p>Garantir o acesso a fontes de energia fiáveis, sustentáveis, modernas e acessíveis para todos. A eficiência energética residencial é o primeiro passo para a descentralização do consumo.</p>
+                        </div>
+                    </div>
+
+                    <div class="lista-dicas">
+                        <div class="linha-dica">
+                            <span class="numero-dica">01</span>
+                            <div class="conteudo-dica">
+                                <h4>Gerenciamento Térmico Ativo</h4>
+                                <p>Aparelhos de refrigeração e climatização (geladeiras, freezers e ar-condicionado) representam frequentemente o maior peso do consumo contínuo. Ajustar a temperatura do ar para 23°C e conferir as borrachas de vedação reduz o esforço do compressor.</p>
+                            </div>
+                        </div>
+                        <div class="linha-dica">
+                            <span class="numero-dica">02</span>
+                            <div class="conteudo-dica">
+                                <h4>O Perigo do Standby (Consumo Vampiro)</h4>
+                                <p>Aparelhos mantidos em modo de espera consomem energia continuamente. Utilizar filtros de linha com chave liga/desliga para centralizar o desligamento de eletrônicos da sala de estar pode gerar economia imediata de até 12% na fatura.</p>
+                            </div>
+                        </div>
+                        <div class="linha-dica">
+                            <span class="numero-dica">03</span>
+                            <div class="conteudo-dica">
+                                <h4>Substituição Tecnológica</h4>
+                                <p>Substituir lâmpadas halógenas ou fluorescentes por tecnologia LED diminui a potência necessária em até 80% para o mesmo nível de iluminação. Priorize sempre eletrodomésticos com selo Procel Categoria A.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <aside class="barra-lateral-dicas">
+                    <div class="caixa-lateral">
+                        <h4>Impacto Comportamental</h4>
+                        <p class="meta-lateral">Pequenas alterações geram grandes resultados ao longo de um ano completo.</p>
+                        <div class="indicador-progresso">
+                            <div class="barra-progresso"></div>
+                        </div>
+                        <p class="subtexto-lateral">Mudar hábitos de uso diário do chuveiro elétrico pode poupar em média R$ 45,00 mensais por pessoa.</p>
+                    </div>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <footer class="rodape">
+        <p>&copy; 2026 MONITOR. Aplicação Interdisciplinar Alinhada à Agenda 2030.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
